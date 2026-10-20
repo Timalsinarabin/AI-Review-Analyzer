@@ -1,0 +1,38 @@
+
+<%= form_for(resource, as: resource_name,
+    url: registration_path(resource_name)) do |f| %>
+
+  <div class="mb-5">
+    <%= f.label :email,
+        class: "mb-2 block text-sm font-medium text-slate-200" %>
+    <%= f.email_field :email,
+        autofocus: true,
+        autocomplete: "email",
+        class: "w-full rounded-lg border border-[#344563] bg-[#090D18] px-4 py-3 text-slate-100 outline-none focus:border-blue-500" %>
+  </div>
+
+  <div class="mb-5">
+    <%= f.label :password,
+        class: "mb-2 block text-sm font-medium text-slate-200" %>
+    <% if @minimum_password_length %>
+      <p class="mb-2 text-xs text-slate-400">
+        Minimum <%= @minimum_password_length %> characters
+      </p>
+    <% end %>
+    <%= f.password_field :password,
+        autocomplete: "new-password",
+        class: "w-full rounded-lg border border-[#344563] bg-[#090D18] px-4 py-3 text-slate-100 outline-none focus:border-blue-500" %>
+  </div>
+
+  <div class="mb-6">
+    <%= f.label :password_confirmation,
+        class: "mb-2 block text-sm font-medium text-slate-200" %>
+    <%= f.password_field :password_confirmation,
+        autocomplete: "new-password",
+        class: "w-full rounded-lg border border-[#344563] bg-[#090D18] px-4 py-3 text-slate-100 outline-none focus:border-blue-500" %>
+  </div>
+
+  <%= f.submit "Create Account",
+      class: "w-full cursor-pointer rounded-lg bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-500" %>
+
+<% end %>

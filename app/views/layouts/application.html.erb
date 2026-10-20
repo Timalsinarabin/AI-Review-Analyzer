@@ -23,7 +23,16 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-[#090D18]">
+    <% if current_user %>
+      <%= render "shared/sidebar" %>
+      <main class="min-h-screen p-4 sm:ml-64 bg-[#090D18] text-slate-100">
+        <%= yield %>
+      </main>
+    <% else %>
+      <main class="min-h-screen text-slate-100">
+        <%= yield %>
+      </main>
+    <% end %>
   </body>
 </html>

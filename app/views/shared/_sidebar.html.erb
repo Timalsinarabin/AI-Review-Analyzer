@@ -1,0 +1,81 @@
+
+<button data-drawer-target="default-sidebar"
+        data-drawer-toggle="default-sidebar"
+        aria-controls="default-sidebar"
+        type="button"
+        class="fixed left-3 top-3 z-50 rounded-lg p-2 text-slate-600 hover:bg-slate-100 sm:hidden">
+  <span class="sr-only">Open sidebar</span>
+  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+       stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
+  </svg>
+</button>
+
+<aside id="default-sidebar"
+       class="fixed inset-y-0 left-0 z-40 flex h-screen w-64
+              -translate-x-full flex-col border-r border-slate-700
+              bg-[#101B33] text-slate-200 transition-transform
+              sm:translate-x-0"
+       aria-label="Sidebar">
+
+  <!-- Brand -->
+  <div class="flex h-16 items-center gap-3 border-b border-slate-700 px-5">
+      <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600 font-bold text-white">
+         AI
+      </div>
+      <span class="text-sm font-bold tracking-wide text-white">
+         Review Analyzer
+      </span>
+   </div>
+
+  <!-- Navigation -->
+  <nav class="flex-1 space-y-2 overflow-y-auto px-3 py-5">
+      <p class="mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500">
+         Workspace
+      </p>
+
+      <%= link_to root_path,
+        class: "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition #{current_page?(root_path) ? 'bg-indigo-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white'}" do %>
+         <span>◫</span>
+         Dashboard
+      <% end %>
+
+      <%= link_to products_path,
+       class: "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition #{request.path.start_with?('/products') ? 'bg-indigo-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white'}" do %>
+         <span>▣</span>
+         Products
+      <% end %>
+
+      <% if false %>
+         <%= link_to reviews_path,
+           class: "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition #{request.path.start_with?('/reviews') ? 'bg-indigo-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white'}" do %>
+            <span>☷</span>
+            Reviews
+         <% end %>
+
+         <%= link_to analytics_path,
+           class: "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition #{request.path.start_with?('/analytics') ? 'bg-indigo-600 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white'}" do %>
+            <span>▥</span>
+            Analytics
+         <% end %>
+      <% end %>
+  </nav>
+
+  <!-- Bottom actions -->
+  <div class="border-t border-slate-700 p-3">
+      <%= link_to "#",
+        class: "mb-2 flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white" do %>
+         <span>⚙</span>
+         Settings
+      <% end %>
+
+      <% if user_signed_in? %>
+         <%= button_to destroy_user_session_path,
+          method: :delete,
+          class: "flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-300 hover:bg-red-500/10 hover:text-red-400" do %>
+         <span>↪</span>
+         Logout
+         <% end %>
+      <% end %>
+  </div>
+</aside>
