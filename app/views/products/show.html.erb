@@ -9,8 +9,15 @@
 
   <%= render @product %>
 
+  <% if @product.analysis.present? %>
+    <div class="border rounded-xl p-4 my-6">
+      <h2 class="text-2xl font-bold">Overall customer opinion</h2>
+      <p class="mt-2"><%= @product.analysis %></p>
+    </div>
+  <% end %>
+
   <%= link_to "Add a review", new_review_path(@product), class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-yellow-600 hover:bg-yellow-400 inline-block font-medium" %>
-  <%= link_to "Edit this product", edit_product_path(@product), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-green-600 hover:bg-green-400 inline-block font-medium" %>
+  <%= link_to "Edit this product", edit_product_path(@product), class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-green-600 hover:bg-green-400 inline-block font-medium" %>
   <%= link_to "Back to products", products_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-400 inline-block font-medium" %>
   <%= button_to "Destroy this product", @product, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-400 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
 </div>
@@ -23,5 +30,11 @@
     </p>
 
     <p class="mt-2"><%= review.review %></p>
+    <% if review.sentiment.present? %>
+      <p class="mt-2 text-sm"><strong>Sentiment:</strong> <%= review.sentiment.capitalize %></p>
+    <% end %>
+    <% if review.analysis.present? %>
+      <p class="mt-3 text-sm text-gray-600"><strong>AI analysis:</strong> <%= review.analysis %></p>
+    <% end %>
   </div>
 <% end %>

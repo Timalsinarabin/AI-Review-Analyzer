@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_23_035914) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_25_150000) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.decimal "price", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
+    t.text "analysis"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -25,6 +26,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_23_035914) do
     t.decimal "ratings", precision: 3, scale: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "analysis"
+    t.string "sentiment"
     t.index ["product_id"], name: "index_reviews_on_product_id"
   end
 
