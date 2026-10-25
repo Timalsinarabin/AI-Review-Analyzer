@@ -28,7 +28,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_25_150000) do
     t.datetime "updated_at", null: false
     t.text "analysis"
     t.string "sentiment"
-    t.index ["product_id"], name: "index_reviews_on_product_id"
+    t.index [ "product_id" ], name: "index_reviews_on_product_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,8 +39,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_25_150000) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index [ "email" ], name: "index_users_on_email", unique: true
+    t.index [ "reset_password_token" ], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "reviews", "products"
