@@ -1,21 +1,23 @@
 
 <% content_for :title, "Products" %>
 
-<div class="w-full">
-  <div class="flex justify-between items-center mb-6">
+<div class="max-w-6xl mx-auto px-2 py-2">
+  <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
     <h1 class="font-bold text-4xl">Products</h1>
 
     <%= link_to "New product", new_product_path,
         class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium" %>
   </div>
 
-  <div class="m-5 p-4 min-h-[calc(100vh-180px)] border border-gray-200 rounded-2xl">
-    <div id="products" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+  <div class="m-1 p-6 min-h-[calc(100vh-180px)] border border-gray-200 rounded-xl bg-[#000417]">
+    <div id="products" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
       <% @products.each do |product| %>
         <%= link_to product_path(product),
-            class: "block rounded-xl border border-gray-200 p-5 hover:shadow-lg hover:border-blue-400 transition duration-200" do %>
-
+            class: "block rounded-xl border border-gray-200 p-5 hover:shadow-lg hover:border-blue-400 transition duration-200 bg-black" do %>
+          <div class="w-full h-32 bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
+            <span class="text-gray-500 text-sm">No image available</span>
+          </div>
           <h2 class="text-xl font-semibold text-white">
             <%= product.name %>
           </h2>
