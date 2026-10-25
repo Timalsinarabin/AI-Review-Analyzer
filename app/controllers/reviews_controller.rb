@@ -13,7 +13,19 @@ class ReviewsController < ApplicationController
     @review = @product.reviews.build(review_params)
 
     if @review.save
-      redirect_to @product, notice: "Review was successfully created."
+      analyzer = ReviewAnalyzerService.new(@review.ratings, @review.review)
+      result = analyzer.analyze_review
+      @review.update!(sentiment: result[:sentiment], analysis: result[:analysis]) if result
+
+      product_analysis = analyzer.analyze_product(@product.name, @product.reviews.reload)
+      @product.update!(analysis: product_analysis) if product_analysis.present?
+
+      notice = if result && product_analysis.present?
+        "Review was successfully created and analyzed."
+      else
+        "Review was successfully created, but analysis was unavailable."
+      end
+      redirect_to @product, notice: notice
     else
       render :new, status: :unprocessable_entity
     end
