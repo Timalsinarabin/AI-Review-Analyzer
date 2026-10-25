@@ -89,6 +89,10 @@ http://localhost:3000
 ## 📊 Example
 
 **Input Review:**
+<img width="1516" height="1078" alt="Screenshot 2026-10-25 212753" src="https://github.com/user-attachments/assets/0269c02e-ec3a-4601-bd61-9823575f38b7" />
+<img width="1831" height="1078" alt="Screenshot 2026-10-25 212818" src="https://github.com/user-attachments/assets/985ac09d-ee8c-4ef2-ae8d-a6389099dafd" />
+<img width="1917" height="933" alt="Screenshot 2026-10-25 212923" src="https://github.com/user-attachments/assets/84d17005-4374-4691-9077-1f38469142f6" />
+
 
 > The product is excellent, and delivery was fast. However, customer support took too long to respond.
 
