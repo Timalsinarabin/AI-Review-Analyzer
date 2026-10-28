@@ -1,34 +1,89 @@
-
 <% content_for :title, "Products" %>
 
-<div class="max-w-6xl mx-auto px-2 py-2">
-  <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-    <h1 class="font-bold text-4xl">Products</h1>
+<div class="min-h-screen bg-slate-950 px-4 py-8 text-slate-100 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-6xl">
 
-    <%= link_to "New product", new_product_path,
-        class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium" %>
-  </div>
+    <!-- Header -->
+    <div class="mb-8 flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-widest text-blue-400">AI Review Analyzer</p>
+        <h1 class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Products</h1>
+        <p class="mt-2 text-sm text-slate-400">Manage products and explore customer insights.</p>
+      </div>
 
-  <div class="m-1 p-6 min-h-[calc(100vh-180px)] border border-gray-200 rounded-xl bg-[#000417]">
-    <div id="products" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-
-      <% @products.each do |product| %>
-        <%= link_to product_path(product),
-            class: "block rounded-xl border border-gray-200 p-5 hover:shadow-lg hover:border-blue-400 transition duration-200 bg-black" do %>
-          <div class="w-full h-32 bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
-            <span class="text-gray-500 text-sm">No image available</span>
-          </div>
-          <h2 class="text-xl font-semibold text-white">
-            <%= product.name %>
-          </h2>
-
-          <p class="mt-2 text-sm text-gray-500">
-            View product details →
-          </p>
-
-        <% end %>
+      <%= link_to new_product_path, class: "inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-950/30 transition hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/20" do %>
+        <span class="text-lg leading-none">+</span>
+        New product
       <% end %>
-
     </div>
+
+    <!-- Product count -->
+    <div class="mb-5 flex items-center justify-between border-b border-slate-800 pb-4">
+      <div>
+        <h2 class="font-semibold text-slate-200">Your products</h2>
+        <p class="mt-1 text-sm text-slate-500">Select a product to view its reviews and AI analysis.</p>
+      </div>
+
+      <span class="shrink-0 rounded-full border border-slate-700 bg-slate-900 px-3 py-1.5 text-xs font-medium text-slate-300">
+        <%= pluralize(@products.size, "product") %>
+      </span>
+    </div>
+
+    <!-- Products Grid -->
+    <% if @products.any? %>
+      <div id="products" class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+
+        <% @products.each do |product| %>
+          <%= link_to product_path(product), class: "group flex min-h-64 flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 transition duration-300 hover:-translate-y-1 hover:border-blue-500/60 hover:bg-slate-900/90 hover:shadow-xl hover:shadow-blue-950/20 focus:outline-none focus:ring-2 focus:ring-blue-500" do %>
+
+            <!-- Card visual -->
+            <div class="relative flex h-36 items-center justify-center overflow-hidden border-b border-slate-800 bg-gradient-to-br from-slate-800 via-slate-900 to-blue-950/40">
+              <div class="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-blue-500/10 blur-2xl transition duration-300 group-hover:bg-blue-500/20"></div>
+
+              <div class="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-slate-700 bg-slate-800/80 text-3xl text-blue-400 shadow-lg transition duration-300 group-hover:scale-110 group-hover:border-blue-500/40">
+                ◈
+              </div>
+
+              <span class="absolute left-3 top-3 rounded-lg border border-slate-700/80 bg-slate-950/70 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+                Product
+              </span>
+            </div>
+
+            <!-- Card content -->
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="line-clamp-2 text-lg font-semibold text-slate-100 transition group-hover:text-blue-400">
+                <%= product.name %>
+              </h3>
+
+              <p class="mt-2 text-sm leading-6 text-slate-400">
+                View product details and customer feedback.
+              </p>
+
+              <div class="mt-auto flex items-center justify-between border-t border-slate-800 pt-4 mt-5">
+                <span class="text-xs font-medium text-slate-500">View details</span>
+                <span class="text-lg text-slate-500 transition duration-200 group-hover:translate-x-1 group-hover:text-blue-400">→</span>
+              </div>
+            </div>
+
+          <% end %>
+        <% end %>
+
+      </div>
+    <% else %>
+      <!-- Empty state -->
+      <div class="rounded-2xl border border-dashed border-slate-700 bg-slate-900/50 px-6 py-16 text-center">
+        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-slate-700 bg-slate-800 text-3xl text-slate-400">
+          ◈
+        </div>
+
+        <h3 class="mt-5 text-lg font-semibold text-white">No products yet</h3>
+        <p class="mx-auto mt-2 max-w-sm text-sm leading-6 text-slate-400">
+          Add your first product to start collecting reviews and analyzing customer sentiment.
+        </p>
+
+        <%= link_to "＋ Add your first product", new_product_path, class: "mt-6 inline-flex items-center justify-center rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-500" %>
+      </div>
+    <% end %>
+
   </div>
 </div>
