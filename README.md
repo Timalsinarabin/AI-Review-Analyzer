@@ -91,12 +91,13 @@ http://localhost:3000
 ## 📊 Example
 
 **Input Review:**
-<img width="1516" height="1078" alt="Screenshot 2026-10-25 212753" src="https://github.com/user-attachments/assets/0269c02e-ec3a-4601-bd61-9823575f38b7" />
-<img width="1831" height="1078" alt="Screenshot 2026-10-25 212818" src="https://github.com/user-attachments/assets/985ac09d-ee8c-4ef2-ae8d-a6389099dafd" />
-<img width="1917" height="933" alt="Screenshot 2026-10-25 212923" src="https://github.com/user-attachments/assets/84d17005-4374-4691-9077-1f38469142f6" />
+<img width="1901" height="927" alt="Screenshot 2026-10-28 173625" src="https://github.com/user-attachments/assets/3f2b3787-76cd-4804-9e4e-26f1c70d329c" />
+
+<img width="1917" height="912" alt="Screenshot 2026-10-28 094833" src="https://github.com/user-attachments/assets/e604596c-b89a-4039-99d4-cf89eb36efd1" />
+
+<img width="1917" height="880" alt="Screenshot 2026-10-28 094811" src="https://github.com/user-attachments/assets/7a558bb9-cf12-4eda-952b-0e52bd1b7fe9" />
 
 
-> The product is excellent, and delivery was fast. However, customer support took too long to respond.
 
 **Example Analysis:**
 
