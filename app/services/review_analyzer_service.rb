@@ -2,15 +2,15 @@ require "httparty"
 
 class ReviewAnalyzerService
   include HTTParty
-  base_uri "http://192.168.1.67:8888"
-  MODEL = ENV.fetch("UNSLOTH_MODEL", "unsloth/Qwen2.5-3B-Instruct-unsloth-bnb-4bit")
-
+  # Change the IP address to localhost here:
+  base_uri "http://192.168.1.65:8888"
+  MODEL = ENV.fetch("UNSLOTH_MODEL", "unsloth_Qwen2.5-3B-Instruct__project-sentiment_1792925930")
   def initialize(rating = nil, review_text = nil)
     @rating = rating
     @review_text = review_text
   end
 
-  def analyze_review
+  def analyze
     response = request(<<~PROMPT)
       Analyze this customer review.
       Return exactly two lines:

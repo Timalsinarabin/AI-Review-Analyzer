@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
 
     if @review.save
       analyzer = ReviewAnalyzerService.new(@review.ratings, @review.review)
-      result = analyzer.analyze_review
+      result = analyzer.analyze
       @review.update!(sentiment: result[:sentiment], analysis: result[:analysis]) if result
 
       product_analysis = analyzer.analyze_product(@product.name, @product.reviews.reload)
