@@ -6,7 +6,7 @@ namespace :reviews do
 
     puts "Analyzing #{reviews.count} reviews..."
     reviews.find_each do |review|
-      result = analyzer.new(review.ratings, review.review).analyze_review
+      result = analyzer.new(review.ratings, review.review).analyze
       abort "Could not analyze review ##{review.id}. Check the Unsloth server and logs." unless result
 
       review.update!(sentiment: result[:sentiment], analysis: result[:analysis])
