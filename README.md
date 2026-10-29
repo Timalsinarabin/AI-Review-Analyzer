@@ -17,7 +17,7 @@ AI Review Analyzer is a Ruby on Rails web application designed to analyze custom
 - **Database:** SQLite
 - **Frontend:** ERB, HTML, CSS, JavaScript
 - **AI Integration:** unsloth_Qwen2.5-3B-Instruct
-- **Fine tuned:** unsloth_Qwen2.5-3B-Instruct__project-sentiment_1792925930
+- **Fine tuned:** [unsloth_Qwen2.5-3B-Instruct__project-sentiment_1792925930](https://huggingface.co/Timalsinarabin/sentiment-qwen2.5-3b)
 - **Fine tuning dataset:** synthetic generated using chat gpt around 120 rows
 - **Dependency Management:** Bundler
 
